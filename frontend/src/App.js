@@ -7,9 +7,6 @@ import Home from './components/Home'
 function App() {
   return (
     <div className="App">
-      llllllllllll
-      this is test for git hub 
-      
     <Header/>
     <Home/>
     <Footer/>
