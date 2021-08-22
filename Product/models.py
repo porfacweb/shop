@@ -10,6 +10,7 @@ class Product(models.Model):
     ProductImage=models.ImageField(db_column='ProductImage', blank=True)
     ProductDiscription=models.CharField(max_length=30)
     ProductDiscount=models.DecimalField(max_digits=13,decimal_places=2)
+    ProductRating=models.IntegerField(default=0)
 
 
     def __str__(self):

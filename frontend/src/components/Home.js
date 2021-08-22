@@ -1,38 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button,Col, Row } from 'react-bootstrap'
 import axios from 'axios'
+import Product from './Product'
 
 
 
 function Home() {
-  const [Product, setProduct] = useState([])
+  const [ProductInfo, setProductInfo] = useState([])
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/v1/GetProductAll').then(result => {
       console.log(result)
       let response = result.data
-      setProduct(response)
+      setProductInfo(response)
     })
   }, [])
 
 
 
   return (
-    <div style={{ height: "80vh" }}>
-      {Product.map((product) => (
-        <Card style={{ width: '18rem' }} key={product.id}>
-          <Card.Img variant="top" src="../../../media/3.jpg" />
-          <Card.Body>
-            <Card.Title></Card.Title>
-            <Card.Title>{product.ProductName}</Card.Title>
-            <Card.Text>
-              {product.ProductDiscription}
-            </Card.Text>
-            <h6>{product.ProductDiscount}</h6>
-            <h6>{product.ProductPrice}</h6>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
+    <div style={{ height: "80vh"}}>
+      <Row>
+              {ProductInfo.map((product) => (
+        <Col xl={3} lg={4} md={4} sm={6} xs={12} key={product.id} style={{marginTop:"30px"}}>
+          <Product product={product}/>
+        </Col>
       ))}
+      </Row>
+
 
     </div>
   )
